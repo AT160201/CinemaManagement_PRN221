@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\CinemaManagement.csproj": {}
+    "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\CinemaManagement.csproj": {}
   },
   "projects": {
-    "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\CinemaManagement.csproj": {
+    "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\CinemaManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\CinemaManagement.csproj",
+        "projectUniqueName": "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\CinemaManagement.csproj",
         "projectName": "CinemaManagement",
-        "projectPath": "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\CinemaManagement.csproj",
+        "projectPath": "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\CinemaManagement.csproj",
         "packagesPath": "C:\\Users\\anhtu\\.nuget\\packages\\",
-        "outputPath": "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\obj\\",
+        "outputPath": "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anhtu\\AppData\\Roaming\\NuGet\\NuGet.Config",

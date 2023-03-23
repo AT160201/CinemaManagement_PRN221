@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LbG4mdfBA37HwzFZTVTklfvMKWg/z8XvcwqnCo91WtvdjxFJdSe6q9MXB5fsZiwUZSDrBOtWdvvk4Au2x3NGOA==",
+  "dgSpecHash": "O/WOgyMGnfp0F15QgyvM15s64DFXqbj2RH0OvvBqwkzGTii7uZEeo7Cn56p0/WEdqeO6fyyuzig0pLLm6HPC8g==",
   "success": true,
-  "projectFilePath": "D:\\PRN221_Tho\\CinemaManagement\\CinemaManagement\\CinemaManagement.csproj",
+  "projectFilePath": "D:\\PRN221_Tho\\CinemaManagement_PRN221\\CinemaManagement\\CinemaManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anhtu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\anhtu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
