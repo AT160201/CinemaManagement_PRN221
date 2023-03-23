@@ -38,7 +38,7 @@ namespace CinemaManagement.Pages.Cinema
                     {
                         string objPerson = JsonSerializer.Serialize<Person>(checkEmail);
                         HttpContext.Session.SetString("user", objPerson);
-                        return RedirectToPage("/Main");
+                        return RedirectToPage("/Index");
                     }
                     else
                     {
