@@ -49,7 +49,7 @@ namespace CinemaManagement.Pages.Cinema
 
             if (uRate != null)
             {
-                uRate.NumericRating = Convert.ToInt32(raw_number);
+                uRate.NumericRating = double.Parse(raw_number);
                 uRate.Comment = comment;
                 _db.Rates.Update(uRate);
                 _db.SaveChanges();
