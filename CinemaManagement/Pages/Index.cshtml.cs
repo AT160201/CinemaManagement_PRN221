@@ -16,16 +16,14 @@ namespace CinemaManagement.Pages
         }
         [BindProperty(SupportsGet = true)]
         public int CurrentPage { get; set; } = 1;
-        public int Count()
-        {
-            return _context.Movies.Count();
-        }
-        public int PageSize { get; set; } = 4;
 
-        public int TotalPages => Count() / PageSize;
+        public int PageSize { get; set; } = 8;
+
+        public int TotalPages { get; set; }
 
         public String Search { get; set; }
         public List<Movie> movies { get; set; }
+
         public List<Genre> genres { get; set; }
         public double? AvgRate(List<Rate> rt)
         {
@@ -47,14 +45,14 @@ namespace CinemaManagement.Pages
                 movies = _context.Movies.Include("Genre").
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
-
+                TotalPages = _context.Movies.ToList().Count / PageSize;
             }
             else
             {
                 movies = _context.Movies.Include("Genre").Where(x => x.GenreId == id).
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
-
+                TotalPages = _context.Movies.Where(x => x.GenreId == id).ToList().Count / PageSize;
             }
         }
 
@@ -66,13 +64,17 @@ namespace CinemaManagement.Pages
                 movies = _context.Movies.Include("Genre").Where(x => x.Title.Contains(Search)).
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
-
+                TotalPages = movies.Count / PageSize;
+                TotalPages = _context.Movies.Where(x => x.Title.Contains(Search)).ToList().Count / PageSize;
             }
             else
             {
                 movies = _context.Movies.Include("Genre").Where(x => x.GenreId == id && x.Title.
                     Contains(Search)).Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
+                TotalPages = movies.Count / PageSize;
+                TotalPages = _context.Movies.Where(x => x.GenreId == id && x.Title.
+                    Contains(Search)).ToList().Count / PageSize;
             }
         }
     }
