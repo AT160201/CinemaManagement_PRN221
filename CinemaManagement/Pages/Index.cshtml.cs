@@ -20,8 +20,6 @@ namespace CinemaManagement.Pages
         public int PageSize { get; set; } = 8;
 
         public int TotalPages { get; set; }
-
-        public String Search { get; set; }
         public List<Movie> movies { get; set; }
 
         public List<Genre> genres { get; set; }
@@ -56,9 +54,8 @@ namespace CinemaManagement.Pages
             }
         }
 
-        public void OnPost(int id)
-        {
-            Search = Request.Form["Search"];
+        public void OnPost(int id, string Search)
+        {            
             if (id == 0)
             {
                 movies = _context.Movies.Include("Genre").Where(x => x.Title.Contains(Search)).

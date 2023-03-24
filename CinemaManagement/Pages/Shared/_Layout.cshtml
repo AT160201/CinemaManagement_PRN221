@@ -24,6 +24,10 @@
                         </li>
                     </ul>
                 </div>
+                <form method="post" asp-page="Index">
+                    <input type="text" name="Search" />
+                    <button type="submit">Tìm kiếm</button>
+                </form>
                 @Html.Partial("~/Pages/Shared/RightHeader.cshtml")
             </div>
         </nav>
