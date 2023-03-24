@@ -1,15 +1,31 @@
 ﻿<div>
+    <style>
+        .navbar-text {
+            font-weight: normal; /* Set default font weight for navbar text */
+        }
+
+            .navbar-text strong {
+                font-weight: bold; /* Set font weight for <strong> element within navbar text */
+            }
+
+        .nav-link:hover {
+            background-color: #E9EBEC; /* Change to desired hover color */
+            border-radius: 5px
+        }
+    </style>
     @if (Context.Session.GetString("user") != null)
     {
+
         Person account = JsonSerializer.Deserialize<Person>(Context.Session.GetString("user"));
         <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
-                <a class="nav-link text-dark">Xin chào @account.Fullname</a>
+                <a style="color:black" class="nav-link navbar-text">Xin chào <strong>@account.Fullname</strong></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-page="/Cinema/SignIn" asp-page-handler="LogOut">Đăng xuất</a>
             </li>
         </ul>
+
     }
     else
     {
