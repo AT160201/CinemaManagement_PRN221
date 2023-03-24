@@ -11,6 +11,7 @@ namespace CinemaManagement.Models
         [Required(ErrorMessage = "Hãy điền comment")]
         public string Comment { get; set; }
         [Required(ErrorMessage = "Hãy điền điểm đánh giá")]
+        [Range(0,10, ErrorMessage ="Điểm đánh giá phải từ 0 đến 10")]
         public double? NumericRating { get; set; }
         public DateTime? Time { get; set; }
 
