@@ -1,0 +1,150 @@
+﻿@page
+@model CinemaManagement.Pages.Admin.IndexModel
+@{
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="stat-widget-two card-body">
+                        <div class="stat-content">
+                            <div class="stat-text">Thể loại phim </div>
+                            <div class="stat-digit"> <i class="fa fa-usd"></i>@Model.totalCategory</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="stat-widget-two card-body">
+                        <div class="stat-content">
+                            <div class="stat-text">Tổng số phim</div>
+                            <div class="stat-digit"> <i class="fa fa-usd"></i>@Model.totalMovie</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="stat-widget-two card-body">
+                        <div class="stat-content">
+                            <div class="stat-text">Tổng số thành viên</div>
+                            <div class="stat-digit"> <i class="fa fa-usd"></i> @Model.totalMember</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card">
+                    <div class="stat-widget-two card-body">
+                        <div class="stat-content">
+                            <div class="stat-text">Số lượt rate</div>
+                            <div class="stat-digit"> <i class="fa fa-usd"></i>@Model.totalRate</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+            <!-- /# column -->
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-8">
+                <div class="card">
+                    <form method="post">
+                    <div class="card-header">
+                        <h4 class="card-title">Chi tiết đánh giá theo phim</h4>
+                        
+                            <select name="movie" onchange="this.form.submit()">
+                                <option value="0">Tất cả phim</option>
+                                @foreach(var m in Model.movies){
+                                    if(Model.movie != null){
+                                    if (@m.MovieId == Model.movie.MovieId)
+                                    {
+                                        <option value="@m.MovieId" selected>@m.Title</option>
+                                    } else{
+                                        <option value="@m.MovieId">@m.Title</option>
+                                    }
+                                    } else{
+                                    <option value="@m.MovieId">@m.Title</option>
+                                    }
+                                    
+                                    
+                                }
+                            </select>
+                        
+                    </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Người dùng</th>
+                                    <th>Điểm đánh giá</th>
+                                    <th>Bình luận</th>
+                                    <th>Thời gian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var r in Model.rates)
+                                {
+                                    <tr>
+                                        <td>@r.Person.Fullname</td>
+                                        <td>@r.NumericRating</td>
+                                        <td>@r.Comment</td>
+                                        <td>@r.Time</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                    <ul class="pagination">
+
+                        @for (var i = 1; i <= Model.TotalPages; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                                <button value="@i" class="page-link" name="page">@i</button>
+                               
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+                </form>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Số phim theo thể loại</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="current-progress">
+                            @foreach(var item in Model.genres){
+                                <div class="progress-content py-2">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="progress-text">@item.Description</div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="current-progressbar">
+                                            <div class="current-progressbar">
+                                                    <progress class="progress" value="@item.Movies.Count()" max="@Model.totalMovie"> @item.Movies.Count()</progress>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
