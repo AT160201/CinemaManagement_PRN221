@@ -18,10 +18,12 @@
 }
 <div class="container">
     <h1>Manage Members</h1>
-    <div class="input-group mb-3">
-        <input type="text" id="memberSearchInput" class="form-control" placeholder="Search members...">
-        <button class="btn btn-outline-secondary" type="button" id="memberSearchButton">Search</button>
-    </div>
+    <form method="get">
+        <div class="input-group mb-3">
+            <input type="text" asp-for="SearchByNameMember" id="memberSearchInput" class="form-control" placeholder="Search members...">
+            <button class="btn btn-outline-secondary" type="button" id="memberSearchButton">Search</button>
+        </div>
+    </form>
 
     <table class="table table-striped table-hover">
         <thead>
@@ -49,9 +51,9 @@
                     <td>@(member.IsActive == true ? "Yes" : "No")</td>
                     <td>
                         <a class="btn btn-sm btn-danger"
-                            asp-page="DeactiveMember"
-                            asp-route-personId="@member.PersonId"
-                            onclick="return confirm('Are you sure you want to deactivate this member?');">
+                       asp-page="DeactiveMember"
+                       asp-route-personId="@member.PersonId"
+                           onclick="return confirm('Are you sure you want to deactivate this member?');">
                             Deactive
                         </a>
                     </td>

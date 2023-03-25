@@ -18,10 +18,12 @@
 }
 <div class="container">
     <h1>Manage Genres</h1>
-    <div class="input-group mb-3">
-        <input type="text" id="genreSearchInput" class="form-control" placeholder="Search genres...">
-        <button class="btn btn-outline-secondary" type="button" id="genreSearchButton">Search</button>
-    </div>
+    <form method="get">
+        <div class="input-group mb-3">
+            <input type="text" asp-for="SearchByDescription" id="genreSearchInput" class="form-control" placeholder="Search genres...">
+            <button class="btn btn-outline-secondary" type="submit" id="genreSearchButton">Search</button>
+        </div>
+    </form>
     <a href="#" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addGenreModal">Add New Genre</a>
 
     <!-- Add Genre Modal -->
