@@ -1,8 +1,21 @@
 ﻿@page
 @model CinemaManagement.Pages.Admin.IndexModel
 @{
+    if (HttpContext.Session.GetString("user") == null)
+    {
+        // Redirect to Login Page
+        Response.Redirect("/Cinema/SignIn");
+    }
+    if (HttpContext.Session.GetString("user") != null)
+    {
+        // Deserialize Session
+        Models.Person account = JsonSerializer.Deserialize<Models.Person>(HttpContext.Session.GetString("user"));
+        if (account.Type == 2)
+        {
+            Response.Redirect("/Index");
+        }
+    } 
 }
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-3 col-sm-6">

@@ -24,10 +24,13 @@
                         </li>
                     </ul>
                 </div>
-                <form asp-page="/Index" method="post">
-                    <input type="text" name="Search" />
-                    <button type="submit">Tìm kiếm</button>
+                <form class="d-flex" method="post" asp-page="Index">
+                    <div class="input-group">
+                        <input style="margin-right: 10px;" type="text" class="form-control rounded-start" name="Search" placeholder="Search...">
+                        <button style="margin-right: 10px;" type="submit" class="btn btn-primary rounded-end">Tìm kiếm</button>
+                    </div>
                 </form>
+
                 @Html.Partial("~/Pages/Shared/RightHeader.cshtml")
             </div>
         </nav>

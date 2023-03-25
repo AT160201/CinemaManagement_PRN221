@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CinemaManagement</title>
     <!-- Favicon icon -->
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CinemaManagement.styles.css" asp-append-version="true" />
@@ -27,7 +27,7 @@
             Nav header start
         ***********************************-->
         <div class="nav-header">
-            <a href="index.html" class="brand-logo">
+            <a href="/Admin" class="brand-logo">
                 <h2 style="color: white">Phim hay</h2>
             </a>
 
@@ -35,6 +35,7 @@
         <!--**********************************
             Nav header end
         ***********************************-->
+        
         <!--**********************************
             Header start
         ***********************************-->
@@ -59,26 +60,26 @@
             <div class="quixnav-scroll">
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a>
+                        <a href="/Admin">
                             <i class="icon icon-chart-bar-33"></i>
                             <span class="nav-text">Thống kê</span>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href="/Admin/Genres/ManageGenres">
                             <i class="icon icon-app-store"></i>
                             <span class="nav-text">Thể loại phim</span>
                         </a>
 
                     </li>
                     <li>
-                        <a>
+                        <a href="/Admin/Members/ManageMembers">
                             <i class="icon icon-single-04 "></i>
                             <span class="nav-text">Members</span>
                         </a>
                     </li>
                     <li>
-                        <a>
+                        <a href="/Admin/Movies/ManageMovies">
                             <i class="icon icon-form"></i>
                             <span class="nav-text">Quản lý phim</span>
                         </a>
@@ -122,8 +123,8 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="./js/global.min.js"></script>
-    <script src="./js/custom.min.js"></script>
+    <script src="~/js/global.min.js"></script>
+    <script src="~/js/custom.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

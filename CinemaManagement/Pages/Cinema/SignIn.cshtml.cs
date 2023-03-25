@@ -34,11 +34,19 @@ namespace CinemaManagement.Pages.Cinema
                 Person checkEmail = _context.Persons.SingleOrDefault(p => p.Email.Equals(InputLogin.Email));
                 if (checkEmail != null)
                 {
-                    if (checkEmail.Password.Equals(InputLogin.Password.Trim()))
+                    if (checkEmail.Password.Equals(InputLogin.Password.Trim()) && checkEmail.IsActive == true)
                     {
                         string objPerson = JsonSerializer.Serialize<Person>(checkEmail);
-                        HttpContext.Session.SetString("user", objPerson);
-                        return RedirectToPage("/Index");
+                        if (checkEmail.Type == 1)
+                        {
+                            HttpContext.Session.SetString("user", objPerson);
+                            return RedirectToPage("/Admin/Index");
+                        }
+                        else
+                        {
+                            HttpContext.Session.SetString("user", objPerson);
+                            return RedirectToPage("/Index");
+                        }
                     }
                     else
                     {
