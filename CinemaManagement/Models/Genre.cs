@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CinemaManagement.Models
 {
@@ -11,8 +12,11 @@ namespace CinemaManagement.Models
         }
 
         public int GenreId { get; set; }
+
+        // Description is not null
+        [Required(ErrorMessage = "Hãy điền mô tả")]
         public string Description { get; set; }
 
-        public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Movie>? Movies { get; set; }
     }
 }

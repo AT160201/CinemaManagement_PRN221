@@ -15,7 +15,6 @@
     </style>
     @if (Context.Session.GetString("user") != null)
     {
-
         Person account = JsonSerializer.Deserialize<Person>(Context.Session.GetString("user"));
         <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
