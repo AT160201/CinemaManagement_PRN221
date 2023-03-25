@@ -18,9 +18,19 @@ namespace CinemaManagement.Pages.Admin.Members
         public List<Person> Members { get; set; }
         public Person Member { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchByNameMember { get; set; }
+
         public IActionResult OnGet()
         {
-            Members = _context.Persons.ToList();
+            if (SearchByNameMember!=null)
+            {
+                Members = _context.Persons.Where(x => x.Fullname.Contains(SearchByNameMember)).ToList();
+            }
+            else
+            {
+                Members = _context.Persons.ToList();
+            }
             Member = new Person();
             return Page();
         }

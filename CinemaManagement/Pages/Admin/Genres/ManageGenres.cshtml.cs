@@ -16,9 +16,19 @@ namespace CinemaManagement.Pages.Admin.Genres
         public List<Genre> Genres { get; set; }
         public Genre Genre { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchByDescription { get; set; }
+
         public IActionResult OnGet()
         {
-            Genres = _context.Genres.ToList();
+            if (SearchByDescription != null)
+            {
+                Genres = _context.Genres.Where(x => x.Description.Contains(SearchByDescription)).ToList();
+            }
+            else
+            {
+                Genres = _context.Genres.ToList();
+            }
             Genre = new Genre();
             return Page();
         }
