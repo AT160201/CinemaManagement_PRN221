@@ -23,6 +23,8 @@ namespace CinemaManagement.Pages
         public List<Movie> movies { get; set; }
 
         public List<Genre> genres { get; set; }
+
+        public int GenreId { get; set; }
         public double? AvgRate(List<Rate> rt)
         {
             double? avgRate = 0;
@@ -38,6 +40,7 @@ namespace CinemaManagement.Pages
         }
         public void OnGet(int id)
         {
+            GenreId = id;
             if (id == 0)
             {
                 movies = _context.Movies.Include("Genre").
@@ -47,7 +50,7 @@ namespace CinemaManagement.Pages
             }
             else
             {
-                movies = _context.Movies.Include("Genre").Where(x => x.GenreId == id).
+                movies = _context.Movies.Include("Genre").Where(x => x.GenreId == GenreId).
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
                 TotalPages = (int)Math.Ceiling((double)_context.Movies.Where(x => x.GenreId == id).ToList().Count / PageSize);
@@ -55,7 +58,8 @@ namespace CinemaManagement.Pages
         }
 
         public void OnPost(int id, string Search)
-        {            
+        {
+            GenreId = id;
             if (id == 0)
             {
                 movies = _context.Movies.Include("Genre").Where(x => x.Title.Contains(Search)).
@@ -66,7 +70,7 @@ namespace CinemaManagement.Pages
             }
             else
             {
-                movies = _context.Movies.Include("Genre").Where(x => x.GenreId == id && x.Title.
+                movies = _context.Movies.Include("Genre").Where(x => x.GenreId == GenreId && x.Title.
                     Contains(Search)).Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
                 TotalPages = movies.Count / PageSize;

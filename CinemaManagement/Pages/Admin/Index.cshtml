@@ -67,8 +67,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Chi tiết đánh giá theo phim</h4>
-                        
-                            <select name="movie" onchange="this.form.submit()">
+
+                        <select style="width:300px" class="form-select" aria-label="Default select example" name="movie" onchange="this.form.submit()">
                                 <option value="0">Tất cả phim</option>
                                 @foreach(var m in Model.movies){
                                     if(Model.movie != null){

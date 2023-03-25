@@ -115,7 +115,7 @@
             @for (var i = 1; i <= Model.TotalPages; i++)
             {
                 <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
-                    <a asp-page="Index" asp-route-currentpage="@i" class="page-link">@i</a>
+                    <a asp-page="Index" asp-route-currentpage="@i" asp-route-id="@Model.GenreId" class="page-link">@i</a>
                 </li>
             }
 
