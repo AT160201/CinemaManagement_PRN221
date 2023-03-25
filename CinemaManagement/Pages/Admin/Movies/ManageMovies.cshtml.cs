@@ -21,10 +21,20 @@ namespace CinemaManagement.Pages.Admin.Movies
 
         public List<Movie> Movies { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchByTitle { get; set; }
+
         public async Task<IActionResult> OnGetAsync()
         {
+            if (SearchByTitle!=null)
+            {
+                Movies = await _context.Movies.Where(x => x.Title.Contains(SearchByTitle)).Include(x => x.Genre).ToListAsync();
+            }
+            else
+            {
+                Movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
+            }
             Genres = await _context.Genres.ToListAsync();
-            Movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
             return Page();
         }
 
