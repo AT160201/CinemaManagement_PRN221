@@ -63,23 +63,37 @@
 <div class="flex-container">
     <div class="Category">
         
+        <style>
+            /* Add hover effect to list items with action class */
+            .list-group-item-action:hover {
+                background-color: #f8f9fa; /* Change to desired hover background color */
+                color: #000; /* Change to desired hover text color */
+            }
+
+            .list-group-item-action a {
+                color: black; /* Set text color to black */
+                text-decoration: none; /* Remove underline */
+            }
+        </style>
         <h2>Thể Loại</h2>
-        <ul>
-            <li><a asp-route-id="0">Tất cả</a></li>
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action"><a asp-route-id="0">Tất cả</a></li>
             @foreach (var i in Model.genres)
             {
-                <li><a asp-page="Index" asp-route-id="@i.GenreId">@i.Description</a></li>
+                <li class="list-group-item list-group-item-action"><a asp-page="Index" asp-route-id="@i.GenreId">@i.Description</a></li>
             }
         </ul>
+
+
     </div>
     <div class="Movie">
         <div class="grid-container">
             @foreach (var i in Model.movies)
             {
                 <div class="card grid-item">
-                    <img src="~/picture/@i.Image" alt="Avatar" style="width:100%" height="200px">
+                    <img src="@i.Image" alt="Avatar" style="width:100%; border-radius:10px" height="200px">
                     <div class="container">
-                        <h4><a asp-page="Cinema/Detail" asp-route-id="@i.MovieId">@i.Title</a></h4>
+                        <h4><a style="color:black;text-decoration:none" asp-page="Cinema/Detail" asp-route-id="@i.MovieId">@i.Title</a></h4>
                         <p>Năm:@i.Year</p>
                         <p>Loại:@i.Genre.Description</p>
                         @if (@Model.AvgRate(Model.GetRateByMovieId(i.MovieId)) == 0)

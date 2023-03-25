@@ -1,9 +1,23 @@
 ﻿@page
 @model CinemaManagement.Pages.Admin.IndexModel
 @{
+    if (HttpContext.Session.GetString("user") == null)
+    {
+        // Redirect to Login Page
+        Response.Redirect("/Cinema/SignIn");
+    }
+    if (HttpContext.Session.GetString("user") != null)
+    {
+        // Deserialize Session
+        Models.Person account = JsonSerializer.Deserialize<Models.Person>(HttpContext.Session.GetString("user"));
+        if (account.Type == 2)
+        {
+            Response.Redirect("/Index");
+        }
+    } 
 }
-
     <div class="container-fluid">
+        <form method="post">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
                 <div class="card">
@@ -48,7 +62,6 @@
             </div>
             <!-- /# column -->
         </div>
-    <form method="post">
         <div class="row">
             <div class="col-xl-8 col-lg-8 col-md-8">
                 <div class="card">
@@ -71,8 +84,7 @@
                                     
                                     
                                 }
-                            </select>
-                        
+                            </select>   
                     </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -111,7 +123,6 @@
 
                     </ul>
                 </div>
-                
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4">
@@ -137,8 +148,7 @@
                                     </div>
                                 </div>
                             </div>
-                            }
-                        
+                            }               
                         </div>
                     <ul class="pagination">
 
@@ -146,7 +156,6 @@
                         {
                             <li class="page-item @(i == Model.CurrentPage2 ? "active" : "")">
                                 <button value="@i" class="page-link" name="page2">@i</button>
-
                             </li>
                         }
 
@@ -155,8 +164,7 @@
                 </div>
 
             </div>
-
         </div>
-            </form>
+</form>
 
     </div>

@@ -1,0 +1,63 @@
+﻿@page
+@model CinemaManagement.Pages.Admin.Members.ManageMembersModel
+@{
+    if (HttpContext.Session.GetString("user") == null)
+    {
+        // Redirect to Login Page
+        Response.Redirect("/Cinema/SignIn");
+    }
+    if (HttpContext.Session.GetString("user") != null)
+    {
+        // Deserialize Session
+        Models.Person account = JsonSerializer.Deserialize<Models.Person>(HttpContext.Session.GetString("user"));
+        if (account.Type == 2)
+        {
+            Response.Redirect("/Index");
+        }
+    }
+}
+<div class="container">
+    <h1>Manage Members</h1>
+    <div class="input-group mb-3">
+        <input type="text" id="memberSearchInput" class="form-control" placeholder="Search members...">
+        <button class="btn btn-outline-secondary" type="button" id="memberSearchButton">Search</button>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Type</th>
+                <th scope="col">IsActive</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var member in Model.Members)
+            {
+                <tr>
+                    <th scope="row">@member.PersonId</th>
+                    <td>@member.Fullname</td>
+                    <td>@member.Gender</td>
+                    <td>@member.Email</td>
+                    <td>@member.Password</td>
+                    <td>@member.Type</td>
+                    <td>@(member.IsActive == true ? "Yes" : "No")</td>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                            asp-page="DeactiveMember"
+                            asp-route-personId="@member.PersonId"
+                            onclick="return confirm('Are you sure you want to deactivate this member?');">
+                            Deactive
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

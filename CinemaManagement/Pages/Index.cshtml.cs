@@ -43,14 +43,14 @@ namespace CinemaManagement.Pages
                 movies = _context.Movies.Include("Genre").
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
-                TotalPages = _context.Movies.ToList().Count / PageSize;
+                TotalPages = (int)Math.Ceiling((double)_context.Movies.ToList().Count / PageSize);
             }
             else
             {
                 movies = _context.Movies.Include("Genre").Where(x => x.GenreId == id).
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
-                TotalPages = _context.Movies.Where(x => x.GenreId == id).ToList().Count / PageSize;
+                TotalPages = (int)Math.Ceiling((double)_context.Movies.Where(x => x.GenreId == id).ToList().Count / PageSize);
             }
         }
 
@@ -62,7 +62,7 @@ namespace CinemaManagement.Pages
                     Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
                 TotalPages = movies.Count / PageSize;
-                TotalPages = _context.Movies.Where(x => x.Title.Contains(Search)).ToList().Count / PageSize;
+                TotalPages = (int)Math.Ceiling((double)_context.Movies.Where(x => x.Title.Contains(Search)).ToList().Count / PageSize);
             }
             else
             {
@@ -70,8 +70,8 @@ namespace CinemaManagement.Pages
                     Contains(Search)).Skip((CurrentPage - 1) * PageSize).Take(PageSize).ToList();
                 genres = _context.Genres.ToList();
                 TotalPages = movies.Count / PageSize;
-                TotalPages = _context.Movies.Where(x => x.GenreId == id && x.Title.
-                    Contains(Search)).ToList().Count / PageSize;
+                TotalPages = (int)Math.Ceiling((double)_context.Movies.Where(x => x.GenreId == id && x.Title.
+                    Contains(Search)).ToList().Count / PageSize);
             }
         }
     }
