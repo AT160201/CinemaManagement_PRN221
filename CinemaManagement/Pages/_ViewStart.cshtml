@@ -5,7 +5,7 @@
         Models.Person account = JsonSerializer.Deserialize<Models.Person>(Context.Session.GetString("user"));
         if (account.Type == 1)
         {
-            Layout = "_AdminLayout";
+            Layout = "_LayoutAdmin";
         }
         else
         {

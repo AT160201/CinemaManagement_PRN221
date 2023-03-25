@@ -48,10 +48,10 @@
             </div>
             <!-- /# column -->
         </div>
+    <form method="post">
         <div class="row">
             <div class="col-xl-8 col-lg-8 col-md-8">
                 <div class="card">
-                    <form method="post">
                     <div class="card-header">
                         <h4 class="card-title">Chi tiết đánh giá theo phim</h4>
                         
@@ -111,7 +111,7 @@
 
                     </ul>
                 </div>
-                </form>
+                
                 </div>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4">
@@ -140,11 +140,23 @@
                             }
                         
                         </div>
+                    <ul class="pagination">
+
+                        @for (var i = 1; i <= Model.TotalPages2; i++)
+                        {
+                            <li class="page-item @(i == Model.CurrentPage2 ? "active" : "")">
+                                <button value="@i" class="page-link" name="page2">@i</button>
+
+                            </li>
+                        }
+
+                    </ul>
                     </div>
                 </div>
 
             </div>
-        </div>
 
+        </div>
+            </form>
 
     </div>
